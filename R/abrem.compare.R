@@ -45,11 +45,10 @@ abrem.compare <- function(beta1,eta1,beta2,eta2){
   weib.cdf <- function (x){
     1 - exp(1)^-(x/eta2)^beta2 
   }
-  # Expression to evaluate P (t2 >= t1)
+  # Composite function and integration (0 to +inf) to evaluate P (t2 >= t1)
   weib.mult <- function (x){
     weib.pdf(x)*weib.cdf(x)
   }
-  
   dif.value <- integrate(f=weib.mult,lower = 0, upper = Inf)
-  return(dif.value$value)
+  return(dif.value$value) # 
 }
